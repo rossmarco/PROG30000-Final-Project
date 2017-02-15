@@ -1,0 +1,90 @@
+﻿@model IEnumerable<FinalProject.Domain.Entities.Team>
+
+@{
+    ViewBag.Title = "ViewTeams";
+}
+
+<h2>Available Bets</h2>
+<div id="table">
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>
+                Team Name
+            </th>
+            <th></th>
+            <th></th>
+            <th>
+                Opposition
+            </th>
+            <th>
+                Odds
+            </th>
+            <th>
+                Favourites
+            </th>
+            <th>Place Bet</th>
+
+            <th></th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            var imagePath1 = "";
+            var imagePath2 = "";
+            var imagename1 = "";
+            var imagename2 = "";
+            if (item.TeamName != null)
+            {
+                imagePath1 = "/Images/" + item.TeamName + ".png";
+                imagename1 = item.TeamName;
+            }
+
+            if (item.OpposingTeamName != null)
+            {
+                imagePath2 = "/Images/" + item.OpposingTeamName + ".png";
+                imagename2 = item.OpposingTeamName;
+            }
+            <tr>
+                <td><img src="@imagePath1" alt="@imagename1" style="width:50px;height:50px;"></td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TeamName)
+                </td>
+                <td> VS </td>
+                <td><img src="@imagePath2" alt="@imagename2" style="width:50px;height:50px;"></td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OpposingTeamName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BettingOdds)
+                </td>
+                <td>
+                    @item.isFavourite.ToString()
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.AmountBid)
+                    </td>*@
+
+                @using (Html.BeginForm("Bet", "Bet"))
+                {
+                    @Html.Hidden("teamId", item.TeamId)
+                    <td>
+                        <div id="temp">
+                            @Html.TextBox("amountBid", null, new { @class = "form-control", style = "width :100px" })
+                        </div>
+                    </td>
+                    <td>
+                        <input type="submit" value="Place Bet" />
+                    </td>
+                }
+
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.BetPayout)
+                    </td>*@
+
+            </tr>
+        }
+
+    </table>
+</div>

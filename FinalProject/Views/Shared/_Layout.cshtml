@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <style>
+        th, td {
+            text-align: center;
+            /*color:white;*/
+        }
+
+        body {
+            background: url("/Images/Background.jpg");
+            min-height: 100%;
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        #temp > input {
+            text-align: center;
+        }
+        .jumbotron
+        {
+            background-color: #222;
+        }
+        .col-md-4, .info{
+            color:black;
+            
+        }
+        .col-md-4{
+            font-size:larger;
+        }
+        #table {
+            background-color: #222;
+            border-color: #080808;
+            padding: 10px;
+            border-radius: 10px;
+            color:#9d9d9d;
+            font-weight:100;
+        }
+        input
+        {
+            color:black;
+            
+        h2{
+            color:#9d9d9d;
+        }
+        th,td{
+            font-size:large;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("PROG30000 Betting App", "Index", "Login", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Login", "Login", "Login", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Matchups", "ViewTeams", "Bet", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Bets", "ViewBets", "CurrentBets", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav"></ul>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container body-content" style="color:#9d9d9d">
+        @RenderBody()
+        @*<hr />*@
+        <br />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Marco & Mena</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
